@@ -30,7 +30,7 @@ public class PlanetService {
     @Autowired
     private PlanetIntegrationService planetIntegrationService;
 
-    private Planet save(Planet planet){
+    public Planet save(Planet planet){
         try{
            return planetRepository.save(planet);
         }catch (Exception e){

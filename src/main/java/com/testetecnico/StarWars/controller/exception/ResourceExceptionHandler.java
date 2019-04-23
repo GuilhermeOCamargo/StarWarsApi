@@ -71,7 +71,7 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public StandardError methodArgumentNotValidException(ConstraintViolationException e, HttpServletRequest req){
+    public StandardError constraintViolationException(ConstraintViolationException e, HttpServletRequest req){
         ValidationError err = new ValidationError(HttpStatus.BAD_REQUEST.value(), "Erro de Validação.", System.currentTimeMillis());
 
         for(ConstraintViolation ce : e.getConstraintViolations()){

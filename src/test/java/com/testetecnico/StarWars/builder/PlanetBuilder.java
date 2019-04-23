@@ -1,6 +1,9 @@
 package com.testetecnico.StarWars.builder;
 
+import com.google.common.collect.Lists;
 import com.testetecnico.StarWars.model.domain.Planet;
+
+import java.util.List;
 
 /**
  * @author Guilherme Camargo
@@ -10,6 +13,10 @@ public class PlanetBuilder {
     private static PlanetBuilder builder;
 
     private PlanetBuilder(){
+    }
+    public static PlanetBuilder withId(long id){
+        builder.planet.setId(id);
+        return builder;
     }
     public static PlanetBuilder withName(String name){
         builder.planet.setName(name);
@@ -40,6 +47,13 @@ public class PlanetBuilder {
     public static PlanetBuilder createEmptyPlanet(){
         planet = new Planet();
         return builder;
+    }
+    public static List<Planet> createList(){
+        return Lists.newArrayList(
+                createDefaultPlanet().build(),
+                createEmptyPlanet().withName("Alderaan").withClimate("temperate")
+                        .withTerrain("jungle, rainforests").build()
+        );
     }
 
 }
